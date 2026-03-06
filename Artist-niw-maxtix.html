@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LawOfficeOfHongminJun Artist NIW Matrix</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --brand: #0f172a;
+      --brand2: #334155;
+      --green-bg: #ecfdf5;
+      --green-tx: #047857;
+      --amber-bg: #fffbeb;
+      --amber-tx: #b45309;
+      --rose-bg: #fff1f2;
+      --rose-tx: #be123c;
+      --blue-bg: #eff6ff;
+      --blue-tx: #1d4ed8;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    input, textarea, select, button {
+      font: inherit;
+    }
+    input, textarea {
+      -webkit-user-select: text;
+      user-select: text;
+    }
+    .wrap {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 22px;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color: white;
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+    .hero-top {
+      display: flex;
+      gap: 20px;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      color: rgba(255,255,255,.95);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: .02em;
+    }
+    h1 { margin: 14px 0 10px; font-size: 38px; line-height: 1.1; }
+    .hero p { margin: 0; color: rgba(255,255,255,.86); line-height: 1.65; }
+    .lang-toggle {
+      display: inline-flex;
+      gap: 6px;
+      padding: 6px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 18px;
+      background: rgba(255,255,255,.08);
+    }
+    .lang-toggle button {
+      border: 0;
+      background: transparent;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .lang-toggle button.active {
+      background: white;
+      color: var(--brand);
+      font-weight: bold;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .firm-box, .action-box {
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 24px;
+      background: rgba(255,255,255,.08);
+      padding: 18px;
+      backdrop-filter: blur(6px);
+    }
+    .firm-name { font-size: 24px; font-weight: bold; letter-spacing: .03em; }
+    .firm-tag { color: rgba(255,255,255,.78); font-size: 13px; margin-top: 4px; }
+    .firm-line { margin-top: 10px; color: rgba(255,255,255,.92); font-size: 14px; line-height: 1.6; }
+    .protect {
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.08);
+      font-size: 12px;
+      line-height: 1.65;
+      color: rgba(255,255,255,.88);
+    }
+    .action-box { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-content: end; }
+    .btn {
+      border: 0;
+      padding: 13px 14px;
+      border-radius: 16px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .btn.white { background: white; color: var(--brand); }
+    .btn.soft { background: rgba(255,255,255,.86); color: var(--brand); }
+    .btn.outline { background: transparent; color: white; border: 1px solid rgba(255,255,255,.22); }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .grid-2-equal {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+    .card h2, .card h3 {
+      margin: 0 0 8px;
+    }
+    .sub {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .full { grid-column: 1 / -1; }
+    label {
+      display: block;
+      font-size: 13px;
+      color: #334155;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .input, .textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 14px;
+      background: white;
+      color: var(--text);
+    }
+    .textarea { min-height: 105px; resize: vertical; }
+    .dash-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .mini {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+    }
+    .mini .cap { color: var(--muted); font-size: 12px; }
+    .mini .big { font-size: 34px; font-weight: bold; margin-top: 6px; }
+    .pill {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+    .pill.green { background: var(--green-bg); color: var(--green-tx); border-color: #a7f3d0; }
+    .pill.amber { background: var(--amber-bg); color: var(--amber-tx); border-color: #fde68a; }
+    .pill.rose { background: var(--rose-bg); color: var(--rose-tx); border-color: #fecdd3; }
+    .progress-wrap { margin-top: 10px; }
+    .progress {
+      height: 8px;
+      background: #eef2f7;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress > div {
+      height: 100%;
+      background: linear-gradient(90deg, #0f172a, #64748b);
+    }
+    .prongs { display: grid; gap: 12px; }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .soft-box {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+      background: #fafafa;
+    }
+    .listbox { border: 1px solid var(--line); border-radius: 18px; padding: 14px; }
+    .rank-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .rank-row.green { background: var(--green-bg); color: var(--green-tx); }
+    .rank-row.rose { background: var(--rose-bg); color: var(--rose-tx); }
+    .flow-card { margin-bottom: 18px; }
+    .flow-row {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      align-items: stretch;
+    }
+    .flow-node {
+      min-width: 220px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+      background: white;
+    }
+    .flow-arrow {
+      display: flex;
+      align-items: center;
+      color: #94a3b8;
+      font-size: 24px;
+      padding: 0 4px;
+    }
+    .sections { display: grid; gap: 18px; }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .metric-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    .weight { color: var(--muted); font-size: 12px; }
+    .metric-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 8px;
+    }
+    .range-row {
+      margin-top: 8px;
+    }
+    .ticks {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 6px;
+    }
+    .note-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      margin-top: 14px;
+      align-items: end;
+    }
+    .checkline {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      height: fit-content;
+      white-space: nowrap;
+    }
+    .tip-card {
+      margin-top: 18px;
+      border: 1px dashed #cbd5e1;
+      border-radius: 24px;
+      background: white;
+      padding: 20px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    #radarBox {
+      width: 100%;
+      min-height: 420px;
+    }
+    .radar-legend {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .copyright-box {
+      margin-top: 16px;
+      background: #f1f5f9;
+      border-radius: 16px;
+      padding: 12px;
+      font-size: 12px;
+      color: #475569;
+    }
+    @media (max-width: 980px) {
+      .hero-grid, .grid-2, .grid-2-equal, .form-grid, .metrics, .info-grid, .note-grid { grid-template-columns: 1fr; }
+      .action-box { grid-template-columns: 1fr 1fr; }
+      h1 { font-size: 30px; }
+    }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white; }
+      .card, .hero, .tip-card { box-shadow: none; }
+      .wrap { max-width: 100%; padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-top">
+        <div style="max-width:880px">
+          <div class="badge">✦ <span id="appTag"></span></div>
+          <h1 id="appTitle"></h1>
+          <p id="appDesc"></p>
+        </div>
+        <div class="lang-toggle no-print">
+          <button class="active" data-lang="ko">한국어</button>
+          <button data-lang="en">English</button>
+          <button data-lang="zh">中文</button>
+        </div>
+      </div>
+      <div class="hero-grid">
+        <div class="firm-box">
+          <div class="firm-name">LAW OFFICE OF HONG-MIN JUN</div>
+          <div class="firm-tag">Attorneys for foreign born individuals and small business owners!</div>
+          <div class="firm-line">askus@junlawfirm.com</div>
+          <div class="firm-line">847-660-4233 / 317-701-2768</div>
+          <div class="firm-line">LAW OFFICE OF HONG-MIN JUN 10150 Lantern Rd. Suite #175, Fishers, IN 46037</div>
+          <div class="protect">
+            <strong id="protectTitle"></strong><br>
+            <span id="protectText"></span><br><br>
+            <span id="copyrightText"></span>
+          </div>
+        </div>
+        <div class="action-box no-print">
+          <button class="btn white" id="printBtn"></button>
+          <button class="btn soft" id="jsonBtn"></button>
+          <button class="btn soft" id="summaryBtn"></button>
+          <button class="btn outline" id="resetBtn"></button>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid-2">
+      <section class="card">
+        <h2 id="basicInfoTitle"></h2>
+        <div class="sub" id="basicInfoDesc"></div>
+        <div class="form-grid">
+          <div>
+            <label id="labelApplicant"></label>
+            <input id="applicantName" class="input" />
+          </div>
+          <div>
+            <label id="labelMedium"></label>
+            <input id="medium" class="input" />
+          </div>
+          <div>
+            <label id="labelNationality"></label>
+            <input id="nationality" class="input" />
+          </div>
+          <div>
+            <label id="labelYears"></label>
+            <input id="yearsSummary" class="input" />
+          </div>
+          <div class="full">
+            <label id="labelCaseSummary"></label>
+            <textarea id="customSummary" class="textarea"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 id="dashboardTitle"></h2>
+        <div class="sub" id="dashboardDesc"></div>
+        <div class="dash-cards">
+          <div class="mini">
+            <div class="cap" id="totalScoreLabel"></div>
+            <div class="big" id="totalScoreValue">0</div>
+            <div style="margin-top:8px"><span class="pill" id="totalScorePill"></span></div>
+          </div>
+          <div class="mini">
+            <div class="cap" id="evidenceDoneLabel"></div>
+            <div class="big" id="evidenceDoneValue">0 / 0</div>
+            <div style="margin-top:8px;font-size:12px;color:#64748b" id="evidenceDoneDesc"></div>
+          </div>
+        </div>
+        <div class="prongs" id="prongs"></div>
+      </section>
+    </div>
+
+    <div class="grid-2-equal">
+      <section class="card">
+        <h2 id="radarTitle"></h2>
+        <div class="sub" id="radarDesc"></div>
+        <div id="radarBox"></div>
+        <div class="radar-legend" id="radarLegend"></div>
+      </section>
+      <section class="card">
+        <h2 id="autoTitle"></h2>
+        <div class="sub" id="autoDesc"></div>
+        <div class="soft-box">
+          <strong id="recommendedLabel"></strong>
+          <div style="margin-top:8px; line-height:1.7" id="recommendedText"></div>
+        </div>
+        <div class="info-grid" style="margin-top:14px;">
+          <div class="listbox">
+            <strong id="topStrengthsLabel"></strong>
+            <div id="topStrengths"></div>
+          </div>
+          <div class="listbox">
+            <strong id="topWeaknessesLabel"></strong>
+            <div id="topWeaknesses"></div>
+          </div>
+        </div>
+        <div class="listbox" style="margin-top:14px;">
+          <strong id="summaryLabel"></strong>
+          <ul id="summaryList"></ul>
+        </div>
+        <div class="listbox" style="margin-top:14px;">
+          <strong id="prongHintsLabel"></strong>
+          <ul id="prongHintsList"></ul>
+        </div>
+      </section>
+    </div>
+
+    <section class="card flow-card">
+      <h2 id="flowTitle"></h2>
+      <div class="sub" id="flowDesc"></div>
+      <div class="flow-row" id="flowRow"></div>
+    </section>
+
+    <div class="sections" id="sections"></div>
+
+    <section class="tip-card">
+      <strong id="usageTitle"></strong>
+      <div id="usageDesc"></div>
+      <div class="copyright-box" id="copyrightBox"></div>
+    </section>
+  </div>
+
+  <script>
+    const APP_BRAND = "LawOfficeOfHongminJun Artist NIW Matrix";
+    const FIXED_ADDRESS = "LAW OFFICE OF HONG-MIN JUN 10150 Lantern Rd. Suite #175, Fishers, IN 46037";
+    const COPYRIGHT = "© Law Office of Hong-min Jun. All rights reserved. Internal analytical framework and interface design are proprietary. Unauthorized copying, redistribution, commercial reuse, or derivative publication is prohibited.";
+    const SCALE_LABELS = ["0", "1", "2", "3", "4", "5"];
+
+    const tr = {
+      ko: {
+        appTag: APP_BRAND,
+        appTitle: "예술인 NIW 평가 매트릭스",
+        appDesc: "단순 체크리스트가 아니라, 절대 수량 데이터와 정성 요소를 함께 입력하여 작품 철학 → 관련 활동 → 전시 → 비평 → 미국 연관성 → 미래 프로젝트의 연결 구조를 시각적으로 분석하는 인터랙티브 HTML 방식의 실무용 도구입니다.",
+        protectTitle: "보호 및 저작권 문구",
+        protectText: "이 도구는 내부 실무용 진단 프레임워크입니다. 무단 복제, 배포, 상업적 전재, 2차 가공 공개를 금합니다.",
+        print: "인쇄",
+        saveJson: "JSON 저장",
+        saveSummary: "요약 저장",
+        reset: "초기화",
+        basicInfo: "기본 정보",
+        basicInfoDesc: "상담 메모나 분석용 프로필을 간단히 입력해 두십시오.",
+        applicantName: "신청인 이름",
+        medium: "주요 매체 / 장르",
+        nationality: "국적",
+        yearsSummary: "활동 기간 요약",
+        caseSummary: "케이스 개요 메모",
+        dashboard: "종합 대시보드",
+        dashboardDesc: "점수는 참고용이며, 실제 NIW 논리 설계를 보조하기 위한 내부 도구입니다.",
+        totalScore: "총점",
+        evidenceDone: "증빙 체크 완료 영역",
+        evidenceDoneDesc: "증빙이 없는 약점 영역은 결과 해석 시 특히 주의",
+        radar: "레이더 차트",
+        radarDesc: "어느 축이 강하고 약한지 한눈에 보기 위한 시각화입니다.",
+        radarLegend: "숫자 입력 항목은 자동으로 5점 척도로 환산되어 레이더 차트와 종합 점수에 반영됩니다.",
+        auto: "자동 해석",
+        autoDesc: "입력값을 바탕으로 서사 방향과 보완 포인트를 요약합니다.",
+        recommended: "권장 서사 방향",
+        topStrengths: "상위 강점 3개",
+        topWeaknesses: "보완 우선순위 3개",
+        summary: "종합 메모",
+        prongHints: "Prong 보완 힌트",
+        flowTitle: "연결 흐름 분석",
+        flowDesc: "예술인 NIW의 핵심은 각 요소가 따로 존재하는 것이 아니라, 작품 철학이 실제 활동으로 이어지고, 그 활동이 전시로, 전시가 비평과 외부 검증으로, 다시 미국에서의 필요성과 미래 프로젝트로 연결되는지를 보여주는 것입니다.",
+        usageTitle: "사용 팁",
+        usageDesc: "이 앱은 예술인 NIW 상담이나 내부 초기 진단에 맞춰 설계되었습니다. 숫자 입력은 가능한 한 절대 수량으로 넣고, 숫자로 환원하기 어려운 요소만 정성 평가로 보완하십시오. 예를 들어 개인전 7회, 단체전 24회, 기사 5건처럼 실제 수치를 입력하면 더 직관적입니다.",
+        attorneyMemo: "변호사 메모",
+        evidenceSecured: "증빙 확보됨",
+        noMemo: "메모 없음",
+        evidenceChecked: "증빙 체크됨",
+        evidenceNeeded: "증빙 확인 필요",
+        logicNode: "논리 연결 노드",
+        score: "점수",
+        strong: "강함",
+        moderate: "보통",
+        weak: "보완 필요",
+        countValue: "입력값",
+        autoScore: "자동 환산",
+        insufficient: "아직 충분한 입력값이 없어 요약이 제한적입니다.",
+        balanced: "현재로서는 세 prong 모두 균형이 비교적 양호합니다.",
+        prongs: {
+          prong1: "Prong 1 · Proposed Endeavor의 실질적 가치와 중요성",
+          prong2: "Prong 2 · 신청자가 이를 추진할 수 있는 역량",
+          prong3: "Prong 3 · 노동허가 면제가 타당한가"
+        },
+        sections: {
+          philosophy: { title: "1. 작품 철학 / 핵심 주제", short: "작품 철학", desc: "숫자로 환원하기 어려운 정성 요소를 중심으로 평가합니다.", labels: ["핵심 주제의 명확성", "주제의 지속성 / 일관성", "사회·문화적 메시지의 깊이", "미술사적 / 이론적 맥락 가능성"] },
+          relatedActivities: { title: "2. 주제와 직접 관련된 활동", short: "관련 활동", desc: "주제와 직접 연결되는 프로젝트, 커뮤니티 활동, 협업, 교육을 봅니다.", labels: ["주제 관련 프로젝트 수", "커뮤니티 / 공공성 활동 수", "주제 직접 협업 건수", "강연·교육 관련 활동 수"] },
+          exhibitions: { title: "3. 전시 및 발표 실적", short: "전시", desc: "개인전, 단체전, 기관전, 주제 관련 전시를 절대 수량 중심으로 봅니다.", labels: ["개인전 수", "주요 단체전 / 기획전 수", "미술관·기관·레지던시 전시 수", "주제 직접 연관 전시 수"] },
+          reviews: { title: "4. 비평 / 보도 / 출판", short: "비평·보도", desc: "작품을 외부가 어떻게 검증했는지, 기사·비평·출판 수로 봅니다.", labels: ["전문 비평 / 큐레이터 텍스트 수", "언론 보도 / 인터뷰 수", "카탈로그·서평·출판물 수", "주제를 직접 다룬 비평 수"] },
+          network: { title: "5. 예술 생태계 내 위치 / 네트워크", short: "네트워크", desc: "기관, 큐레이터, 갤러리와의 연결 및 반복 초청을 봅니다.", labels: ["큐레이터·기관 협업 수", "지속적 갤러리 / 기관 관계 수", "전문 협회 / 초청 활동 수", "반복 초청 / 재협업 수"] },
+          impact: { title: "6. 영향력 / 파급력", short: "영향력", desc: "강연, 교육, 공공 담론 형성, 후속 영향 요소를 수량과 정성으로 봅니다.", labels: ["강연 / 워크숍 / 세미나 수", "멘토링 / 교육 영향 활동 수", "공공 담론 관련 활동 수", "후속 영향 사례 수"] },
+          continuity: { title: "7. 활동 지속성 / 경력의 안정성", short: "지속성", desc: "활동 연수와 프로젝트 축적 정도를 봅니다.", labels: ["활동 연수", "시리즈 / 프로젝트 수", "연간 평균 발표 / 전시 수", "경력 일관성(정성)"] },
+          international: { title: "8. 국제 활동 / 범위", short: "국제성", desc: "해외 전시, 레지던시, 국제 협업, 국제적 확장성을 봅니다.", labels: ["국제 전시 / 발표 수", "해외 레지던시 수", "국경 간 협업 수", "국제 확장 가능성(정성)"] },
+          usRelevance: { title: "9. 미국과의 연결성", short: "미국 연관성", desc: "미국 내 전시, 기관 연결, 미국 사회 이슈 관련성 등을 봅니다.", labels: ["미국 전시 / 발표 수", "미국 기관 / 대학 / 미술관 연결 수", "작품 주제의 미국 사회적 관련성(정성)", "미국 내 수용 / 확장 가능성(정성)"] },
+          future: { title: "10. 미래 프로젝트 / Proposed Endeavor", short: "미래 계획", desc: "앞으로 미국에서 무엇을 할 것인지의 구체성과 실행 가능성을 봅니다.", labels: ["구체적 미래 프로젝트 수", "실행 가능성(정성)", "기관 / 협업 상대 수", "미국 내 중요성 설명 가능성(정성)"] }
+        },
+        narratives: {
+          pureAndUs: "순수 예술형 논리와 미국 문화적 기여 논리를 함께 검토할 수 있는 케이스입니다.",
+          needUsBridge: "작품 철학과 외부 평가 자료는 비교적 좋으나, 미국과의 직접 연결고리를 별도로 설계해야 하는 케이스입니다.",
+          strongUsFuture: "미국 내 프로젝트와 미래 계획을 중심으로 proposed endeavor를 비교적 선명하게 구성할 수 있는 케이스입니다.",
+          strongShowWeakReview: "전시는 강하지만, 그 전시가 어떤 의미로 읽혔는지 보여주는 비평·보도 자료 보강이 중요합니다.",
+          hintUs: "Prong 1과 3에서 미국 연관성 보강 필요",
+          hintFuture: "미래 프로젝트의 구체화 필요",
+          hintReviews: "비평·보도 자료를 통해 외부 평가 축 보강 필요",
+          hintNetwork: "기관·큐레이터 네트워크 증빙 정리 필요"
+        }
+      },
+      en: {
+        appTag: APP_BRAND,
+        appTitle: "Artist NIW Evaluation Matrix",
+        appDesc: "An interactive HTML-style practical tool that combines absolute-count data and qualitative inputs to analyze how artistic philosophy, related activities, exhibitions, reviews, U.S. relevance, and future projects connect to each other.",
+        protectTitle: "Protection & Copyright Notice",
+        protectText: "This tool is an internal analytical framework. Unauthorized copying, redistribution, commercial reuse, or public derivative publication is prohibited.",
+        print: "Print",
+        saveJson: "Save JSON",
+        saveSummary: "Save Summary",
+        reset: "Reset",
+        basicInfo: "Basic Information",
+        basicInfoDesc: "Enter a brief profile and internal consultation notes.",
+        applicantName: "Applicant Name",
+        medium: "Primary Medium / Genre",
+        nationality: "Nationality",
+        yearsSummary: "Career Duration Summary",
+        caseSummary: "Case Overview Notes",
+        dashboard: "Dashboard",
+        dashboardDesc: "Scores are for internal reference and help structure NIW analysis.",
+        totalScore: "Overall Score",
+        evidenceDone: "Evidence Checked Sections",
+        evidenceDoneDesc: "Pay close attention to weak sections without supporting evidence.",
+        radar: "Radar Chart",
+        radarDesc: "A quick visual view of strong and weak dimensions.",
+        radarLegend: "Count-based fields are automatically converted into a 5-point scale for the radar chart and overall scoring.",
+        auto: "Auto Analysis",
+        autoDesc: "Summarizes narrative direction and priority areas based on the inputs.",
+        recommended: "Recommended Narrative Direction",
+        topStrengths: "Top 3 Strengths",
+        topWeaknesses: "Top 3 Priorities to Improve",
+        summary: "Summary Notes",
+        prongHints: "Prong Improvement Hints",
+        flowTitle: "Connection Flow Analysis",
+        flowDesc: "The key to an artist NIW case is not that each item exists separately, but that artistic philosophy leads to real activities, those activities lead to exhibitions, exhibitions lead to external validation through reviews, and that chain connects to U.S. relevance and future projects.",
+        usageTitle: "Usage Tips",
+        usageDesc: "This app is designed for artist NIW consultations and internal initial screening. Enter actual counts whenever possible, and use qualitative inputs only where numbers do not tell the whole story. For example, entering 7 solo shows, 24 group shows, and 5 press articles is more intuitive than assigning arbitrary values.",
+        attorneyMemo: "Attorney Notes",
+        evidenceSecured: "Evidence Secured",
+        noMemo: "No notes",
+        evidenceChecked: "Evidence checked",
+        evidenceNeeded: "Evidence review needed",
+        logicNode: "Logic Node",
+        score: "Score",
+        strong: "Strong",
+        moderate: "Moderate",
+        weak: "Needs Support",
+        countValue: "Input",
+        autoScore: "Auto score",
+        insufficient: "There is not enough input yet for a fuller summary.",
+        balanced: "At the moment, all three prongs appear relatively balanced.",
+        prongs: {
+          prong1: "Prong 1 · Substantial merit and importance of the proposed endeavor",
+          prong2: "Prong 2 · Ability of the applicant to advance the endeavor",
+          prong3: "Prong 3 · Whether a waiver of the labor certification is justified"
+        },
+        sections: {
+          philosophy: { title: "1. Artistic Philosophy / Core Theme", short: "Philosophy", desc: "Focuses on qualitative factors that cannot be reduced to numbers alone.", labels: ["Clarity of core theme", "Consistency of theme", "Depth of social/cultural message", "Art-historical / theoretical positioning"] },
+          relatedActivities: { title: "2. Activities Directly Related to the Theme", short: "Related Activities", desc: "Looks at projects, public activities, collaborations, and teaching directly tied to the theme.", labels: ["Theme-related projects", "Community / public-facing activities", "Direct theme-related collaborations", "Lectures / educational activities tied to theme"] },
+          exhibitions: { title: "3. Exhibition and Presentation Record", short: "Exhibitions", desc: "Uses absolute counts for solo shows, group shows, institutional shows, and theme-linked shows.", labels: ["Solo exhibitions", "Major group / curated exhibitions", "Museum / institutional / residency shows", "Theme-linked exhibitions"] },
+          reviews: { title: "4. Reviews / Press / Publications", short: "Reviews & Press", desc: "Measures how the work has been externally validated through articles, reviews, and publications.", labels: ["Professional reviews / curator texts", "Press coverage / interviews", "Catalogs / reviews / publications", "Reviews directly addressing the theme"] },
+          network: { title: "5. Position Within the Art Ecosystem / Network", short: "Network", desc: "Looks at ties with curators, institutions, galleries, and repeat invitations.", labels: ["Curator / institution collaborations", "Ongoing gallery / institutional relationships", "Professional memberships / invitation-based activities", "Repeat invitations / repeat collaborations"] },
+          impact: { title: "6. Impact / Reach", short: "Impact", desc: "Evaluates lectures, teaching, public discourse activity, and downstream influence.", labels: ["Lectures / workshops / seminars", "Mentoring / teaching impact activities", "Public discourse activities", "Follow-on influence examples"] },
+          continuity: { title: "7. Continuity / Career Stability", short: "Continuity", desc: "Looks at years active and accumulation of projects over time.", labels: ["Years active", "Series / projects", "Average annual shows / presentations", "Career coherence (qualitative)"] },
+          international: { title: "8. International Activity / Scope", short: "International", desc: "Evaluates overseas shows, residencies, international collaborations, and global relevance.", labels: ["International exhibitions / presentations", "Overseas residencies", "Cross-border collaborations", "Global relevance (qualitative)"] },
+          usRelevance: { title: "9. U.S. Relevance", short: "U.S. Relevance", desc: "Looks at U.S. shows, institution links, social relevance, and expansion potential.", labels: ["U.S. exhibitions / presentations", "U.S. institution / university / museum links", "U.S. social relevance of theme (qualitative)", "U.S. acceptance / expansion potential (qualitative)"] },
+          future: { title: "10. Future Projects / Proposed Endeavor", short: "Future Plan", desc: "Evaluates the specificity and feasibility of what the artist plans to do in the U.S.", labels: ["Specific future projects", "Feasibility (qualitative)", "Institutions / collaborators", "Ability to explain U.S. importance (qualitative)"] }
+        },
+        narratives: {
+          pureAndUs: "This case may support both a pure-artistic narrative and a U.S. cultural contribution narrative.",
+          needUsBridge: "The artistic philosophy and external evaluation materials are relatively solid, but the case needs a separately designed bridge to the United States.",
+          strongUsFuture: "This case may support a relatively clear proposed endeavor focused on U.S.-based projects and future plans.",
+          strongShowWeakReview: "The exhibitions are strong, but the case would benefit from stronger review and press materials showing how those exhibitions were understood.",
+          hintUs: "Strengthen U.S. relevance for Prongs 1 and 3",
+          hintFuture: "Make the future project more concrete",
+          hintReviews: "Strengthen external validation through reviews and press materials",
+          hintNetwork: "Organize evidence of institutional and curator network"
+        }
+      },
+      zh: {
+        appTag: APP_BRAND,
+        appTitle: "艺术家 NIW 评估矩阵",
+        appDesc: "这是一个互动式 HTML 风格的实务工具，结合绝对数量数据与定性输入，分析艺术理念、相关活动、展览、评论、美国关联性与未来项目之间如何相互连接。",
+        protectTitle: "保护与版权声明",
+        protectText: "本工具属于内部分析框架。未经授权，禁止复制、传播、商业再利用或公开发表衍生版本。",
+        print: "打印",
+        saveJson: "保存 JSON",
+        saveSummary: "保存摘要",
+        reset: "重置",
+        basicInfo: "基本信息",
+        basicInfoDesc: "请输入简要档案和内部咨询备注。",
+        applicantName: "申请人姓名",
+        medium: "主要媒介 / 类型",
+        nationality: "国籍",
+        yearsSummary: "从业年限概述",
+        caseSummary: "案件概况备注",
+        dashboard: "综合面板",
+        dashboardDesc: "分数仅供内部参考，用于帮助构建 NIW 论证。",
+        totalScore: "总分",
+        evidenceDone: "已勾选证据的部分",
+        evidenceDoneDesc: "对于缺少证据且分数较弱的部分应特别留意。",
+        radar: "雷达图",
+        radarDesc: "快速查看强项与弱项。",
+        radarLegend: "数量型输入会自动换算为 5 分制，并用于雷达图与总分计算。",
+        auto: "自动分析",
+        autoDesc: "根据输入内容总结叙事方向和优先补强部分。",
+        recommended: "建议叙事方向",
+        topStrengths: "前三项优势",
+        topWeaknesses: "前三项补强重点",
+        summary: "综合备注",
+        prongHints: "Prong 补强提示",
+        flowTitle: "逻辑连接流程分析",
+        flowDesc: "艺术家 NIW 的关键，不在于每个要素各自存在，而在于艺术理念如何延伸为实际活动，这些活动如何形成展览，展览如何通过评论获得外部验证，并进一步连接到美国关联性与未来项目。",
+        usageTitle: "使用提示",
+        usageDesc: "本工具适用于艺术家 NIW 咨询及内部初步筛查。请尽量输入实际数量，仅在数字不能充分说明时再使用定性输入。例如，直接输入 7 次个展、24 次群展、5 篇报道，比任意打 1 到 5 分更直观。",
+        attorneyMemo: "律师备注",
+        evidenceSecured: "证据已具备",
+        noMemo: "暂无备注",
+        evidenceChecked: "已勾选证据",
+        evidenceNeeded: "需要确认证据",
+        logicNode: "逻辑节点",
+        score: "分数",
+        strong: "强",
+        moderate: "中等",
+        weak: "需要补强",
+        countValue: "输入值",
+        autoScore: "自动换算",
+        insufficient: "目前输入不足，摘要仍较为有限。",
+        balanced: "目前三项 prong 看起来相对均衡。",
+        prongs: {
+          prong1: "Prong 1 · Proposed endeavor 的实质价值与重要性",
+          prong2: "Prong 2 · 申请人推进该 endeavor 的能力",
+          prong3: "Prong 3 · 豁免劳工证是否合理"
+        },
+        sections: {
+          philosophy: { title: "1. 艺术理念 / 核心主题", short: "艺术理念", desc: "主要评估难以用数字完全表达的定性因素。", labels: ["核心主题的清晰度", "主题的一致性", "社会 / 文化信息的深度", "艺术史 / 理论定位"] },
+          relatedActivities: { title: "2. 与主题直接相关的活动", short: "相关活动", desc: "评估与主题直接相连的项目、公共活动、合作与教学。", labels: ["与主题相关的项目数", "社区 / 公共性活动数", "与主题直接相关的合作数", "与主题相关的讲座 / 教学活动数"] },
+          exhibitions: { title: "3. 展览与发表记录", short: "展览", desc: "以绝对数量为中心评估个展、群展、机构展与主题相关展览。", labels: ["个展数量", "重要群展 / 策展展览数量", "美术馆 / 机构 / 驻留展数量", "与主题直接相关的展览数量"] },
+          reviews: { title: "4. 评论 / 媒体 / 出版", short: "评论与媒体", desc: "通过报道、评论、出版物衡量作品的外部验证程度。", labels: ["专业评论 / 策展人文本数量", "媒体报道 / 采访数量", "图录 / 书评 / 出版物数量", "直接讨论主题的评论数量"] },
+          network: { title: "5. 在艺术生态中的位置 / 网络", short: "网络", desc: "评估与策展人、机构、画廊的关系以及重复受邀情况。", labels: ["策展人 / 机构合作数", "持续性画廊 / 机构关系数", "专业协会 / 受邀活动数", "重复受邀 / 再合作数"] },
+          impact: { title: "6. 影响力 / 辐射力", short: "影响力", desc: "评估讲座、教学、公共讨论与后续影响。", labels: ["讲座 / 工作坊 / 研讨会数量", "指导 / 教学影响活动数", "公共讨论相关活动数", "后续影响案例数"] },
+          continuity: { title: "7. 持续性 / 职业稳定性", short: "持续性", desc: "评估从业年限及项目长期累积情况。", labels: ["从业年限", "系列 / 项目数量", "年度平均展览 / 发表数量", "职业路径一致性（定性）"] },
+          international: { title: "8. 国际活动 / 范围", short: "国际性", desc: "评估海外展览、驻留、国际合作与全球相关性。", labels: ["国际展览 / 发表数量", "海外驻留数量", "跨境合作数量", "国际扩展性（定性）"] },
+          usRelevance: { title: "9. 与美国的关联性", short: "美国关联性", desc: "评估美国展览、机构联系、社会议题相关性与扩展潜力。", labels: ["美国展览 / 发表数量", "美国机构 / 大学 / 美术馆联系数量", "作品主题与美国社会的关联性（定性）", "在美国的接受 / 扩展潜力（定性）"] },
+          future: { title: "10. 未来项目 / Proposed Endeavor", short: "未来计划", desc: "评估艺术家未来在美国开展项目的具体性与可行性。", labels: ["具体未来项目数", "可行性（定性）", "机构 / 合作方数量", "能否说明其在美国的重要性（定性）"] }
+        },
+        narratives: {
+          pureAndUs: "该案件可以同时考虑纯艺术叙事与对美国文化贡献的叙事。",
+          needUsBridge: "艺术理念与外部评价材料相对较好，但仍需要单独设计与美国的直接连接。",
+          strongUsFuture: "该案件可以较清晰地围绕美国项目与未来计划来构建 proposed endeavor。",
+          strongShowWeakReview: "展览较强，但仍需补强评论与媒体材料，以说明这些展览如何被理解和评价。",
+          hintUs: "需要加强 Prong 1 和 3 中的美国关联性",
+          hintFuture: "需要让未来项目更加具体",
+          hintReviews: "应通过评论和媒体材料加强外部验证",
+          hintNetwork: "应整理机构与策展人网络相关证据"
+        }
+      }
+    };
+
+    const blueprint = [
+      { id: 'philosophy', fields: [
+        { key: 'themeClarity', weight: 1.3, inputType: 'qualitative' },
+        { key: 'themeConsistency', weight: 1.1, inputType: 'qualitative' },
+        { key: 'socialMeaning', weight: 1.1, inputType: 'qualitative' },
+        { key: 'artHistoricalPosition', weight: 1.0, inputType: 'qualitative' }
+      ], noteKey: 'philosophyNote', evidenceKey: 'philosophyEvidence', mapsTo: ['prong1','prong2'] },
+      { id: 'relatedActivities', fields: [
+        { key: 'researchProjects', weight: 1.2, inputType: 'count', maxGood: 6 },
+        { key: 'communityProjects', weight: 0.9, inputType: 'count', maxGood: 6 },
+        { key: 'collaborationStrength', weight: 1.0, inputType: 'count', maxGood: 8 },
+        { key: 'teachingRelevance', weight: 0.9, inputType: 'count', maxGood: 10 }
+      ], noteKey: 'activitiesNote', evidenceKey: 'activitiesEvidence', mapsTo: ['prong1','prong2'] },
+      { id: 'exhibitions', fields: [
+        { key: 'soloExhibitions', weight: 1.2, inputType: 'count', maxGood: 8 },
+        { key: 'groupExhibitions', weight: 1.0, inputType: 'count', maxGood: 25 },
+        { key: 'institutionalShows', weight: 1.3, inputType: 'count', maxGood: 8 },
+        { key: 'themeExhibitionFit', weight: 1.1, inputType: 'count', maxGood: 10 }
+      ], noteKey: 'exhibitionsNote', evidenceKey: 'exhibitionsEvidence', mapsTo: ['prong1','prong2'] },
+      { id: 'reviews', fields: [
+        { key: 'criticalReviews', weight: 1.3, inputType: 'count', maxGood: 6 },
+        { key: 'pressCoverage', weight: 1.0, inputType: 'count', maxGood: 12 },
+        { key: 'catalogsPublications', weight: 1.0, inputType: 'count', maxGood: 8 },
+        { key: 'reviewThemeAlignment', weight: 1.1, inputType: 'count', maxGood: 6 }
+      ], noteKey: 'reviewsNote', evidenceKey: 'reviewsEvidence', mapsTo: ['prong1','prong2'] },
+      { id: 'network', fields: [
+        { key: 'curatorNetwork', weight: 1.1, inputType: 'count', maxGood: 10 },
+        { key: 'galleryRelations', weight: 1.0, inputType: 'count', maxGood: 6 },
+        { key: 'professionalMemberships', weight: 0.8, inputType: 'count', maxGood: 5 },
+        { key: 'ecosystemCredibility', weight: 1.1, inputType: 'count', maxGood: 8 }
+      ], noteKey: 'networkNote', evidenceKey: 'networkEvidence', mapsTo: ['prong2','prong3'] },
+      { id: 'impact', fields: [
+        { key: 'lecturesWorkshops', weight: 0.9, inputType: 'count', maxGood: 15 },
+        { key: 'mentoringInfluence', weight: 0.8, inputType: 'count', maxGood: 10 },
+        { key: 'publicDialogue', weight: 1.2, inputType: 'count', maxGood: 8 },
+        { key: 'fieldInfluence', weight: 1.2, inputType: 'count', maxGood: 6 }
+      ], noteKey: 'impactNote', evidenceKey: 'impactEvidence', mapsTo: ['prong1','prong2','prong3'] },
+      { id: 'continuity', fields: [
+        { key: 'yearsActive', weight: 1.0, inputType: 'count', maxGood: 15 },
+        { key: 'seriesDevelopment', weight: 1.1, inputType: 'count', maxGood: 10 },
+        { key: 'outputContinuity', weight: 1.1, inputType: 'count', maxGood: 6 },
+        { key: 'careerCoherence', weight: 1.0, inputType: 'qualitative' }
+      ], noteKey: 'continuityNote', evidenceKey: 'continuityEvidence', mapsTo: ['prong2','prong3'] },
+      { id: 'international', fields: [
+        { key: 'internationalShows', weight: 1.1, inputType: 'count', maxGood: 10 },
+        { key: 'residencies', weight: 1.0, inputType: 'count', maxGood: 6 },
+        { key: 'crossBorderCollaborations', weight: 1.0, inputType: 'count', maxGood: 8 },
+        { key: 'globalRelevance', weight: 1.0, inputType: 'qualitative' }
+      ], noteKey: 'internationalNote', evidenceKey: 'internationalEvidence', mapsTo: ['prong1','prong2'] },
+      { id: 'usRelevance', fields: [
+        { key: 'usShows', weight: 1.2, inputType: 'count', maxGood: 6 },
+        { key: 'usInstitutionLinks', weight: 1.3, inputType: 'count', maxGood: 8 },
+        { key: 'usIssueRelevance', weight: 1.3, inputType: 'qualitative' },
+        { key: 'usAudiencePotential', weight: 1.0, inputType: 'qualitative' }
+      ], noteKey: 'usRelevanceNote', evidenceKey: 'usRelevanceEvidence', mapsTo: ['prong1','prong3'] },
+      { id: 'future', fields: [
+        { key: 'futureSpecificity', weight: 1.3, inputType: 'count', maxGood: 5 },
+        { key: 'futureFeasibility', weight: 1.2, inputType: 'qualitative' },
+        { key: 'futureInstitutionalSupport', weight: 1.2, inputType: 'count', maxGood: 6 },
+        { key: 'futureNationalImportance', weight: 1.3, inputType: 'qualitative' }
+      ], noteKey: 'futureNote', evidenceKey: 'futureEvidence', mapsTo: ['prong1','prong2','prong3'] }
+    ];
+
+    let lang = 'ko';
+    const state = {
+      applicantName: '', medium: '', nationality: '', yearsSummary: '', customSummary: ''
+    };
+    blueprint.forEach(sec => {
+      sec.fields.forEach(f => state[f.key] = 0);
+      state[sec.noteKey] = '';
+      state[sec.evidenceKey] = false;
+    });
+
+    function countToFive(v, maxGood) {
+      v = Number(v || 0);
+      if (v <= 0) return 0;
+      return Math.min(5, Number(((v / maxGood) * 5).toFixed(2)));
+    }
+    function sectionScore(sec) {
+      let totalWeight = 0, weighted = 0;
+      sec.fields.forEach(f => {
+        totalWeight += f.weight;
+        const val = f.inputType === 'count' ? countToFive(state[f.key], f.maxGood) : Number(state[f.key] || 0);
+        weighted += val * f.weight;
+      });
+      return Number(((weighted / (totalWeight * 5)) * 100).toFixed(1));
+    }
+    function scoreLabel(score) {
+      const t = tr[lang];
+      if (score >= 80) return { text: t.strong, cls: 'green' };
+      if (score >= 60) return { text: t.moderate, cls: 'amber' };
+      return { text: t.weak, cls: 'rose' };
+    }
+    function avg(arr) {
+      if (!arr.length) return 0;
+      return Number((arr.reduce((a,b) => a + b, 0) / arr.length).toFixed(1));
+    }
+    function currentSections() {
+      const tt = tr[lang].sections;
+      return blueprint.map(sec => ({
+        ...sec,
+        title: tt[sec.id].title,
+        short: tt[sec.id].short,
+        desc: tt[sec.id].desc,
+        labels: tt[sec.id].labels
+      }));
+    }
+    function calc() {
+      const sections = currentSections();
+      const scores = {};
+      sections.forEach(s => scores[s.id] = sectionScore(s));
+      const total = Number((Object.values(scores).reduce((a,b)=>a+b,0) / sections.length).toFixed(1));
+      const prongs = {
+        prong1: avg(sections.filter(s => s.mapsTo.includes('prong1')).map(s => scores[s.id])),
+        prong2: avg(sections.filter(s => s.mapsTo.includes('prong2')).map(s => scores[s.id])),
+        prong3: avg(sections.filter(s => s.mapsTo.includes('prong3')).map(s => scores[s.id]))
+      };
+      return { sections, scores, total, prongs };
+    }
+
+    function bindBasics() {
+      ['applicantName','medium','nationality','yearsSummary','customSummary'].forEach(id => {
+        const el = document.getElementById(id);
+        el.addEventListener('input', e => { state[id] = e.target.value; render(); });
+      });
+    }
+
+    function renderStaticText() {
+      const t = tr[lang];
+      document.documentElement.lang = lang;
+      document.getElementById('appTag').textContent = t.appTag;
+      document.getElementById('appTitle').textContent = t.appTitle;
+      document.getElementById('appDesc').textContent = t.appDesc;
+      document.getElementById('protectTitle').textContent = t.protectTitle;
+      document.getElementById('protectText').textContent = t.protectText;
+      document.getElementById('copyrightText').textContent = COPYRIGHT;
+      document.getElementById('printBtn').textContent = t.print;
+      document.getElementById('jsonBtn').textContent = t.saveJson;
+      document.getElementById('summaryBtn').textContent = t.saveSummary;
+      document.getElementById('resetBtn').textContent = t.reset;
+      document.getElementById('basicInfoTitle').textContent = t.basicInfo;
+      document.getElementById('basicInfoDesc').textContent = t.basicInfoDesc;
+      document.getElementById('labelApplicant').textContent = t.applicantName;
+      document.getElementById('labelMedium').textContent = t.medium;
+      document.getElementById('labelNationality').textContent = t.nationality;
+      document.getElementById('labelYears').textContent = t.yearsSummary;
+      document.getElementById('labelCaseSummary').textContent = t.caseSummary;
+      document.getElementById('dashboardTitle').textContent = t.dashboard;
+      document.getElementById('dashboardDesc').textContent = t.dashboardDesc;
+      document.getElementById('totalScoreLabel').textContent = t.totalScore;
+      document.getElementById('evidenceDoneLabel').textContent = t.evidenceDone;
+      document.getElementById('evidenceDoneDesc').textContent = t.evidenceDoneDesc;
+      document.getElementById('radarTitle').textContent = t.radar;
+      document.getElementById('radarDesc').textContent = t.radarDesc;
+      document.getElementById('radarLegend').textContent = t.radarLegend;
+      document.getElementById('autoTitle').textContent = t.auto;
+      document.getElementById('autoDesc').textContent = t.autoDesc;
+      document.getElementById('recommendedLabel').textContent = t.recommended;
+      document.getElementById('topStrengthsLabel').textContent = t.topStrengths;
+      document.getElementById('topWeaknessesLabel').textContent = t.topWeaknesses;
+      document.getElementById('summaryLabel').textContent = t.summary;
+      document.getElementById('prongHintsLabel').textContent = t.prongHints;
+      document.getElementById('flowTitle').textContent = t.flowTitle;
+      document.getElementById('flowDesc').textContent = t.flowDesc;
+      document.getElementById('usageTitle').textContent = t.usageTitle;
+      document.getElementById('usageDesc').textContent = t.usageDesc;
+      document.getElementById('copyrightBox').textContent = COPYRIGHT;
+      document.getElementById('applicantName').placeholder = t.applicantName;
+      document.getElementById('medium').placeholder = t.medium;
+      document.getElementById('nationality').placeholder = t.nationality;
+      document.getElementById('yearsSummary').placeholder = t.yearsSummary;
+      document.getElementById('customSummary').placeholder = t.caseSummary;
+      document.querySelectorAll('.lang-toggle button').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+    }
+
+    function renderProngs(prongs) {
+      const t = tr[lang];
+      const wrap = document.getElementById('prongs');
+      wrap.innerHTML = '';
+      ['prong1','prong2','prong3'].forEach(key => {
+        const score = prongs[key];
+        const lbl = scoreLabel(score);
+        const div = document.createElement('div');
+        div.className = 'panel';
+        div.innerHTML = `
+          <div class="panel-head">
+            <div>${t.prongs[key]}</div>
+            <span class="pill ${lbl.cls}">${score}</span>
+          </div>
+          <div class="progress-wrap"><div class="progress"><div style="width:${score}%"></div></div></div>
+        `;
+        wrap.appendChild(div);
+      });
+    }
+
+    function renderRadar(scores) {
+      const labels = currentSections().map(s => s.short);
+      const values = currentSections().map(s => scores[s.id]);
+      const box = document.getElementById('radarBox');
+      const width = box.clientWidth || 560;
+      const height = 420;
+      const cx = width / 2;
+      const cy = 215;
+      const radius = Math.min(width, 420) * 0.28;
+      const levels = 5;
+      const n = labels.length;
+      let svg = `<svg width="100%" height="${height}" viewBox="0 0 ${width} ${height}">`;
+      for (let level = 1; level <= levels; level++) {
+        const r = radius * (level / levels);
+        let pts = [];
+        for (let i = 0; i < n; i++) {
+          const angle = -Math.PI / 2 + (Math.PI * 2 * i / n);
+          pts.push(`${cx + Math.cos(angle) * r},${cy + Math.sin(angle) * r}`);
+        }
+        svg += `<polygon points="${pts.join(' ')}" fill="none" stroke="#cbd5e1" stroke-width="1" />`;
+      }
+      for (let i = 0; i < n; i++) {
+        const angle = -Math.PI / 2 + (Math.PI * 2 * i / n);
+        const x = cx + Math.cos(angle) * radius;
+        const y = cy + Math.sin(angle) * radius;
+        svg += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#cbd5e1" stroke-width="1" />`;
+        const lx = cx + Math.cos(angle) * (radius + 28);
+        const ly = cy + Math.sin(angle) * (radius + 28);
+        svg += `<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="#475569">${labels[i]}</text>`;
+      }
+      let dataPts = [];
+      for (let i = 0; i < n; i++) {
+        const angle = -Math.PI / 2 + (Math.PI * 2 * i / n);
+        const r = radius * (values[i] / 100);
+        const x = cx + Math.cos(angle) * r;
+        const y = cy + Math.sin(angle) * r;
+        dataPts.push([x,y]);
+      }
+      svg += `<polygon points="${dataPts.map(p => p.join(',')).join(' ')}" fill="rgba(29,78,216,.18)" stroke="#1d4ed8" stroke-width="2" />`;
+      dataPts.forEach(p => {
+        svg += `<circle cx="${p[0]}" cy="${p[1]}" r="3.5" fill="#1d4ed8" />`;
+      });
+      svg += `</svg>`;
+      box.innerHTML = svg;
+    }
+
+    function renderAnalysis(sections, scores, total, prongs) {
+      const t = tr[lang];
+      const totalPill = scoreLabel(total);
+      document.getElementById('totalScoreValue').textContent = total;
+      const tp = document.getElementById('totalScorePill');
+      tp.textContent = totalPill.text;
+      tp.className = `pill ${totalPill.cls}`;
+      const evidenceCount = sections.filter(s => state[s.evidenceKey]).length;
+      document.getElementById('evidenceDoneValue').textContent = `${evidenceCount} / ${sections.length}`;
+      renderProngs(prongs);
+      renderRadar(scores);
+
+      const strengths = [...sections].sort((a,b) => scores[b.id] - scores[a.id]).slice(0,3);
+      const weaknesses = [...sections].sort((a,b) => scores[a.id] - scores[b.id]).slice(0,3);
+      const strengthBox = document.getElementById('topStrengths');
+      const weakBox = document.getElementById('topWeaknesses');
+      strengthBox.innerHTML = '';
+      weakBox.innerHTML = '';
+      strengths.forEach(s => {
+        strengthBox.innerHTML += `<div class="rank-row green"><span>${s.short}</span><span>${scores[s.id]}</span></div>`;
+      });
+      weaknesses.forEach(s => {
+        weakBox.innerHTML += `<div class="rank-row rose"><span>${s.short}</span><span>${scores[s.id]}</span></div>`;
+      });
+
+      let direction = t.narratives.pureAndUs;
+      if (scores.philosophy >= 75 && scores.reviews >= 70 && scores.usRelevance < 60) direction = t.narratives.needUsBridge;
+      else if (scores.usRelevance >= 75 && scores.future >= 75) direction = t.narratives.strongUsFuture;
+      else if (scores.exhibitions >= 75 && scores.reviews < 60) direction = t.narratives.strongShowWeakReview;
+      document.getElementById('recommendedText').textContent = direction;
+
+      const summaryItems = [];
+      const strengthNames = sections.filter(s => scores[s.id] >= 80).map(s => s.short);
+      const riskNames = sections.filter(s => scores[s.id] < 60).map(s => s.short);
+      const evidenceGaps = sections.filter(s => !state[s.evidenceKey]).map(s => s.short);
+      if (strengthNames.length) summaryItems.push((lang === 'ko') ? `강점은 ${strengthNames.join(', ')} 영역입니다.` : (lang === 'en') ? `The strongest areas are ${strengthNames.join(', ')}.` : `最强的部分是 ${strengthNames.join('、')}。`);
+      if (riskNames.length) summaryItems.push((lang === 'ko') ? `보완이 필요한 영역은 ${riskNames.join(', ')}입니다.` : (lang === 'en') ? `The areas needing more support are ${riskNames.join(', ')}.` : `需要补强的部分是 ${riskNames.join('、')}。`);
+      if (evidenceGaps.length) summaryItems.push((lang === 'ko') ? `현재 증빙 체크가 없는 영역은 ${evidenceGaps.join(', ')}입니다.` : (lang === 'en') ? `Sections without evidence checkmarks are currently ${evidenceGaps.join(', ')}.` : `目前尚未勾选证据的部分有 ${evidenceGaps.join('、')}。`);
+
+      const summaryList = document.getElementById('summaryList');
+      summaryList.innerHTML = '';
+      (summaryItems.length ? summaryItems : [t.insufficient]).forEach(x => {
+        const li = document.createElement('li');
+        li.textContent = x;
+        summaryList.appendChild(li);
+      });
+
+      const hints = [];
+      if (scores.usRelevance < 60) hints.push(t.narratives.hintUs);
+      if (scores.future < 60) hints.push(t.narratives.hintFuture);
+      if (scores.reviews < 60) hints.push(t.narratives.hintReviews);
+      if (scores.network < 60) hints.push(t.narratives.hintNetwork);
+      const hintsList = document.getElementById('prongHintsList');
+      hintsList.innerHTML = '';
+      (hints.length ? hints : [t.balanced]).forEach(x => {
+        const li = document.createElement('li');
+        li.textContent = x;
+        hintsList.appendChild(li);
+      });
+    }
+
+    function renderFlow(sections, scores) {
+      const t = tr[lang];
+      const ids = ['philosophy','relatedActivities','exhibitions','reviews','usRelevance','future'];
+      const row = document.getElementById('flowRow');
+      row.innerHTML = '';
+      ids.forEach((id, idx) => {
+        const s = sections.find(x => x.id === id);
+        const label = scoreLabel(scores[id]);
+        const node = document.createElement('div');
+        node.className = 'flow-node';
+        node.innerHTML = `
+          <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start;">
+            <div>
+              <div style="font-weight:700;font-size:14px">${s.short}</div>
+              <div style="font-size:12px;color:#64748b;margin-top:4px">${t.logicNode}</div>
+            </div>
+            <span class="pill ${label.cls}">${label.text}</span>
+          </div>
+          <div style="margin-top:10px;font-size:12px;color:#64748b;line-height:1.6;min-height:52px">${state[s.noteKey] || t.noMemo}</div>
+          <div style="margin-top:10px;font-size:12px;color:${state[s.evidenceKey] ? '#047857' : '#be123c'}">${state[s.evidenceKey] ? t.evidenceChecked : t.evidenceNeeded}</div>
+        `;
+        row.appendChild(node);
+        if (idx < ids.length - 1) {
+          const arrow = document.createElement('div');
+          arrow.className = 'flow-arrow';
+          arrow.textContent = '→';
+          row.appendChild(arrow);
+        }
+      });
+    }
+
+    function createMetricInput(field, label, sec, t) {
+      const box = document.createElement('div');
+      box.className = 'metric';
+      const auto = field.inputType === 'count' ? countToFive(state[field.key], field.maxGood) : Number(state[field.key] || 0);
+      const metricTop = document.createElement('div');
+      metricTop.className = 'metric-top';
+      metricTop.innerHTML = `<div style="font-size:14px;font-weight:600;line-height:1.5">${label}</div><div class="weight">Weight ${field.weight}</div>`;
+      box.appendChild(metricTop);
+      if (field.inputType === 'count') {
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.min = '0';
+        input.value = state[field.key];
+        input.className = 'input';
+        input.addEventListener('input', e => { state[field.key] = Number(e.target.value || 0); render(); });
+        box.appendChild(input);
+        const meta = document.createElement('div');
+        meta.className = 'metric-meta';
+        meta.innerHTML = `<span>${t.countValue}: ${state[field.key]}</span><span>${t.autoScore}: ${auto.toFixed(1)} / 5</span>`;
+        box.appendChild(meta);
+        const pwrap = document.createElement('div');
+        pwrap.className = 'progress-wrap';
+        pwrap.innerHTML = `<div class="progress"><div style="width:${(auto/5)*100}%"></div></div>`;
+        box.appendChild(pwrap);
+      } else {
+        const rangeWrap = document.createElement('div');
+        rangeWrap.className = 'range-row';
+        const input = document.createElement('input');
+        input.type = 'range';
+        input.min = '0'; input.max = '5'; input.step = '1'; input.value = state[field.key];
+        input.style.width = '100%';
+        input.addEventListener('input', e => { state[field.key] = Number(e.target.value); render(); });
+        const ticks = document.createElement('div');
+        ticks.className = 'ticks';
+        ticks.innerHTML = SCALE_LABELS.map(x => `<span>${x}</span>`).join('');
+        const meta = document.createElement('div');
+        meta.className = 'metric-meta';
+        const desc = state[field.key] >= 4 ? t.strong : state[field.key] >= 2 ? t.moderate : t.weak;
+        meta.innerHTML = `<span>${t.score}: ${state[field.key]} / 5</span><span>${desc}</span>`;
+        rangeWrap.appendChild(input);
+        rangeWrap.appendChild(ticks);
+        box.appendChild(rangeWrap);
+        box.appendChild(meta);
+      }
+      return box;
+    }
+
+    function renderSections(sections, scores) {
+      const t = tr[lang];
+      const wrap = document.getElementById('sections');
+      wrap.innerHTML = '';
+      sections.forEach(sec => {
+        const label = scoreLabel(scores[sec.id]);
+        const card = document.createElement('section');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="section-head">
+            <div>
+              <h3>${sec.title}</h3>
+              <div class="sub" style="margin:0">${sec.desc}</div>
+            </div>
+            <span class="pill ${label.cls}">${label.text} · ${scores[sec.id]}</span>
+          </div>
+          <div class="progress-wrap"><div class="progress"><div style="width:${scores[sec.id]}%"></div></div></div>
+        `;
+        const metrics = document.createElement('div');
+        metrics.className = 'metrics';
+        sec.fields.forEach((field, idx) => metrics.appendChild(createMetricInput(field, sec.labels[idx], sec, t)));
+        card.appendChild(metrics);
+        const noteGrid = document.createElement('div');
+        noteGrid.className = 'note-grid';
+        noteGrid.innerHTML = `
+          <div>
+            <label>${t.attorneyMemo}</label>
+            <textarea class="textarea" id="${sec.noteKey}">${state[sec.noteKey] || ''}</textarea>
+          </div>
+          <label class="checkline"><input type="checkbox" id="${sec.evidenceKey}" ${state[sec.evidenceKey] ? 'checked' : ''} /> ${t.evidenceSecured}</label>
+        `;
+        card.appendChild(noteGrid);
+        wrap.appendChild(card);
+      });
+      sections.forEach(sec => {
+        document.getElementById(sec.noteKey).addEventListener('input', e => { state[sec.noteKey] = e.target.value; render(); });
+        document.getElementById(sec.evidenceKey).addEventListener('change', e => { state[sec.evidenceKey] = e.target.checked; render(); });
+      });
+    }
+
+    function render() {
+      renderStaticText();
+      const { sections, scores, total, prongs } = calc();
+      renderAnalysis(sections, scores, total, prongs);
+      renderFlow(sections, scores);
+      renderSections(sections, scores);
+    }
+
+    function downloadBlob(filename, content, type) {
+      const blob = new Blob([content], { type });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    document.querySelectorAll('.lang-toggle button').forEach(btn => {
+      btn.addEventListener('click', () => { lang = btn.dataset.lang; render(); });
+    });
+    document.getElementById('printBtn').addEventListener('click', () => window.print());
+    document.getElementById('jsonBtn').addEventListener('click', () => {
+      const { sections, scores, total, prongs } = calc();
+      downloadBlob(
+        `${state.applicantName || 'artist-niw-matrix'}.json`,
+        JSON.stringify({
+          brand: APP_BRAND,
+          office: {
+            name: 'LAW OFFICE OF HONG-MIN JUN',
+            address: FIXED_ADDRESS,
+            email: 'askus@junlawfirm.com',
+            phones: ['847-660-4233','317-701-2768'],
+            copyright: COPYRIGHT
+          },
+          language: lang,
+          profile: {
+            applicantName: state.applicantName,
+            medium: state.medium,
+            nationality: state.nationality,
+            yearsSummary: state.yearsSummary,
+            customSummary: state.customSummary
+          },
+          state,
+          sectionScores: scores,
+          prongs,
+          totalScore: total,
+          generatedAt: new Date().toISOString()
+        }, null, 2),
+        'application/json'
+      );
+    });
+    document.getElementById('summaryBtn').addEventListener('click', () => {
+      const { sections, scores, total, prongs } = calc();
+      const t = tr[lang];
+      const lines = [
+        APP_BRAND,
+        FIXED_ADDRESS,
+        COPYRIGHT,
+        '',
+        `${t.applicantName}: ${state.applicantName || '-'}`,
+        `${t.medium}: ${state.medium || '-'}`,
+        `${t.nationality}: ${state.nationality || '-'}`,
+        `${t.yearsSummary}: ${state.yearsSummary || '-'}`,
+        `${t.caseSummary}: ${state.customSummary || '-'}`,
+        '',
+        `${t.totalScore}: ${total}`,
+        `${t.prongs.prong1}: ${prongs.prong1}`,
+        `${t.prongs.prong2}: ${prongs.prong2}`,
+        `${t.prongs.prong3}: ${prongs.prong3}`,
+        '',
+        ...sections.map(s => `${s.title}: ${scores[s.id]}`)
+      ].join('\n');
+      downloadBlob(`${state.applicantName || 'artist-niw-matrix-summary'}.txt`, lines, 'text/plain;charset=utf-8');
+    });
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      if (!confirm(lang === 'ko' ? '입력값을 모두 초기화하시겠습니까?' : lang === 'en' ? 'Reset all inputs?' : '要重置所有输入吗？')) return;
+      Object.keys(state).forEach(k => state[k] = (typeof state[k] === 'boolean') ? false : (typeof state[k] === 'number' ? 0 : ''));
+      render();
+    });
+
+    bindBasics();
+    render();
+  </script>
+</body>
+</html>
